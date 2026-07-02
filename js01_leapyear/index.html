@@ -12,29 +12,24 @@
 
 
     <script>
-        // id="result" の要素を取得
-        const r = document.getElementById('result');
-        const caution = () => {
-            const y = prompt("西暦年を入れてください。")
-            //alert(y + '年!');
-            if ( calc_leap(y) == true ) {
-                r.textContent = y + '年はうるう年';
-            } else {
-                r.textContent = y + '年はうるう年ではありません';
-            }
-        }
+    const r = document.getElementById("result");
 
-        const calc_leap = (year) => {
-            //数値に変換して判定
-            const yNum = Number(year);
-            if (yNum == 2000) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-       
+    const caution = () => {
+        const y = prompt("西暦年を入れてください。");
 
+        if (calc_leap(y)) {
+            r.textContent = y + "年はうるう年";
+        } else {
+            r.textContent = y + "年はうるう年ではありません";
+        }
+    }
+
+    const calc_leap = (year) => {
+        year = Number(year);
+
+        return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0);
+    }
     </script>
+
 </body>
 </html>
